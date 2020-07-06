@@ -1,12 +1,14 @@
 echo "Welcome to Employee Wage Computation"
 
-isPresent=1;
+ispresent=1;
+isPartTime=1;
+isFullTime=2;
 empRatePerHr=20;
 empHrs=8;
-salary=0;
+totalSalary=0;
 
 randomCheck=$(( RANDOM%2 ));
-if [ $isPresent -eq $randomCheck ];
+if [[ $isPresent -eq $randomCheck ]];
 then
 	echo "Employee is present"
 else
