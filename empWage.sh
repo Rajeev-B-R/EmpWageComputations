@@ -1,12 +1,14 @@
-#!/bin/bash -x
+# !/bin/bash 
 echo "Welcome to Employee Wage Computation"
 
+# constants for the program
 isPartTime=1;
 isFullTime=2;
 maxHrsInMonth=100;
 empRatePerHr=20;
 numWorkingDays=20;
 
+# variables
 totalWorkHrs=0;
 totalWorkingDays=0;
 
@@ -36,9 +38,8 @@ do
         (( totalWorkingDays++ ))
         workHrs="$( getWorkHours $((RANDOM%3)) )"
 	totalWorkHrs=$(( $totalWorkHrs + $workHrs ))
-	empDailyWage[$totalWorkingDays]="$( calcDailyWage $workHrs )"
+	empDailyWage["$totalWorkingDays"]="$( calcDailyWage $workHrs )"
+	totalSalary="$( calcDailyWage $totalWorkHrs )"
+	echo -e "Day $totalWorkingDays Daily Wage \n $totalSalary " ${empDailyWage[$totalWorkingDays]}
 done
-
-totalSalary=$(( $totalWorkHrs * $empRatePerHr ));
-echo "Daily wage " ${empDailyWage[@]}
 
